@@ -607,39 +607,30 @@ if tg == "games":
             stop=input("Would you like to keep using games or stop now? (y to continue, n to stop.) ")
         elif game_type == "GTN":
             import random
-            def number_guessing_game():
-                number = random.randint(1, 1000)
-                attempts = 0
-
-                print("Guess a number between 1 and 1000")
-
-                while True:
-                    try:
-                        guess = int(input("Enter your guess: "))
-                        attempts += 0
-                    except ValueError:
-                        print("Invalid input. Please enter a number.")
-                        attempts += 0
-                        print()
-                        continue
-        
-                    if guess < number:
-                        print("Too low!")
-                        attempts +=1
-                        print()
-                    elif guess > number:
-                        print("Too high!")
-                        attempts +=1
-                        print()
-                    else:
-                        print()
-                        print("Congratulations! You guessed the number in " + str(attempts)+" attempts! (not true)")
-                        break
-
-            if __name__ == "__main__":
-                number_guessing_game()
-            stop=input("Would you like to keep using games or stop now? (y to continue, n to stop.) ")
-        
+            number = random.randint(1, 1000)
+            attempts = 0
+            print("Guess a number between 1 and 1000")
+            while True:
+                try:
+                    guess = int(input("Enter your guess: "))
+                except ValueError:
+                    print("Invalid input. Please enter a number.")
+                    attempts += 1
+                    print()
+                    continue
+                if guess < number:
+                    print("Too low!")
+                    attempts +=1
+                    print()
+                elif guess > number:
+                    print("Too high!")
+                    attempts +=1
+                    print()
+                else:
+                    print()
+                    attempts += 1
+                    print(f"Congratulations! You guessed the number in {attempts} attempts!")
+                    break
         elif game_type == "UNO":
             print("Commencing...")
             import random
