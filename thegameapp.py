@@ -11,24 +11,24 @@ stop= "y"
 import random
 import time
 import sys
-tg=input("Would you like to use tools or games? ")
+tg=input("Would you like to use tools or games? ").strip().lower()
 #if tg - aka type_game, the input = "games", then -->
 if tg == "games":
     
     while stop == "y":
-        game_type=input("What type of game would you like to play? (Options: rock paper scissors {type RPS}, 2 player battle {type TPB}, Mad Libs {type MLB}, tic-tac-toe {type TTT}, uno {type UNO},or guess the number {type GTN}). ")
-        if game_type == "TTT":
+        game_type=input("What type of game would you like to play? (Options: rock paper scissors {type RPS}, 2 player battle {type TPB}, Mad Libs {type MLB}, tic-tac-toe {type TTT}, uno {type UNO},or guess the number {type GTN}). ").strip().upper()
+        if game_type.upper().strip() == "TTT":
             import random, sys
             winamt = 0
             lossamt = 0
             tieamt = 0
+            username = input("What is your username? ").strip()
             playamt = 0
             stop = "y"
-            username = input("What is your username? ")
-            pvp = input("Would you like to go against 'computer' or 'player'? ")
+            pvp = input("Would you like to go against 'computer' or 'player'? ").strip()
             if pvp.lower() == "player":
                 pvp_type = "player"
-                username2 = input("Player2, please enter your username. ")
+                username2 = input("Player2, please enter your username. ").strip()
             elif pvp.lower() == "computer":
                 pvp_type = "computer"
             else:
@@ -71,8 +71,8 @@ if tg == "games":
                     possible = [square1, square2, square3, square4, square5, square6, square7, square8, square9]
                     print()
                     endgame = False
-                    print(username + "'s turn!")
-                    ps = input("Would you like to be X or O? (X/O) {Type 'QUIT' to quit} ")
+                    print(f"{username}'s turn!")
+                    ps = input("Would you like to be X or O? (X/O) {Type 'QUIT' to quit} ").strip()
                     if ps.upper() == "X":
                         ps = "X"
                         cs = "O"
@@ -102,8 +102,7 @@ if tg == "games":
                         else:
                             pass
                         print(f"{username}'s turn!")
-                        ua1 = input(f"What square would you like to place it on?\nSquares to place on: {possible} ")
-                        ua1 = ua1.upper()
+                        ua1 = input(f"What square would you like to place it on?\nSquares to place on: {possible} ").upper().strip()
                         if ua1 in possible:
                             possible.remove(ua1)
                         else:
@@ -149,19 +148,19 @@ if tg == "games":
                         print()
                         if win == "true":
                             print(f"You chose: {ua1}!")
-                            print("You chose: " + ua1 + "!")
+                            print(f"You chose: {ua1}!")
                             print("|-----|-----|-----|")
-                            print("|  "+s1+"  |  "+s2+"  |  "+s3+"  |")
+                            print(f"|  {s1}  |  {s2}  |  {s3}  |")
                             print("|-----|-----|-----|")
-                            print("|  "+s4+"  |  "+s5+"  |  "+s6+"  |")
+                            print(f"|  {s4}  |  {s5}  |  {s6}  |")
                             print("|-----|-----|-----|")
-                            print("|  "+s7+"  |  "+s8+"  |  "+s9+"  |")
+                            print(f"|  {s7}  |  {s8}  |  {s9}  |")
                             print("|-----|-----|-----|")
                             print()
                             print()
                             print(username+winner)
                             winamt += 1
-                            stop = input("Would you like to keep playing or stop now? (y to continue, n to stop.) ")
+                            stop = input("Would you like to keep playing or stop now? (y to continue, n to stop.) ").strip()
                             if stop.lower() == "n": # stop or continue playing
                                 print(f"-------------------------------\nSTATS -\n----------------------------------\nTotal wins for {username}: {winamt}\nTotal ties between them: {tieamt}\nTotal wins for {username2}: {lossamt}\nHave a good day!")
                                 sys.exit()
@@ -171,18 +170,18 @@ if tg == "games":
                             pass
                         if len(possible) == 0 and win != "true": # checks length of possible (if 0 then tie)
                             tieamt += 1
-                            print(username + " chose: " + ua1 + "!")
+                            print(f"{username} chose: {ua1}!")
                             print("The game is a tie!")
                             print("|-----|-----|-----|")
-                            print("|  "+s1+"  |  "+s2+"  |  "+s3+"  |")
+                            print(f"|  {s1}  |  {s2}  |  {s3}  |")
                             print("|-----|-----|-----|")
-                            print("|  "+s4+"  |  "+s5+"  |  "+s6+"  |")
+                            print(f"|  {s4}  |  {s4}  |  {s6}  |")
                             print("|-----|-----|-----|")
-                            print("|  "+s7+"  |  "+s8+"  |  "+s9+"  |")
+                            print(f"|  {s7}  |  {s8}  |  {s9}  |")
                             print("|-----|-----|-----|")
                             print()
                             print()
-                            stop=input("Would you like to keep playing or stop now? (y to continue, n to stop.) ")
+                            stop=input("Would you like to keep playing or stop now? (y to continue, n to stop.) ").strip()
                             if stop.lower() == "y":
                                 playamt += 1
                                 break
@@ -190,19 +189,18 @@ if tg == "games":
                                 playamt += 1
                                 print(f"-------------------------------\nSTATS -\n----------------------------------\nTotal wins: {winamt}\nTotal ties: {tieamt}\nTotal losses: {lossamt}\nTotal plays: {playamt}\nHave a good day!")
                                 sys.exit()
-                        print("You chose: " + ua1 + "!") # else go on as usual
+                        print(f"You chose: {ua1}!") # else go on as usual
                         print("|-----|-----|-----|")
-                        print("|  "+s1+"  |  "+s2+"  |  "+s3+"  |")
+                        print(f"|  {s1}  |  {s2}  |  {s3}  |")
                         print("|-----|-----|-----|")
-                        print("|  "+s4+"  |  "+s5+"  |  "+s6+"  |")
+                        print(f"|  {s4}  |  {s4}  |  {s6}  |")
                         print("|-----|-----|-----|")
-                        print("|  "+s7+"  |  "+s8+"  |  "+s9+"  |")
+                        print(f"|  {s7}  |  {s8}  |  {s9}  |")
                         print("|-----|-----|-----|")
                         print()
                         print()
                         print(f"{username2}'s turn!")
-                        ca1 = input(f"What square would you like to place on?\nSquares to place on: {possible}")
-                        ca1 = ca1.upper()
+                        ca1 = input(f"What square would you like to place on?\nSquares to place on: {possible}").upper().strip()
                         print(f"{username2} chose: {ca1} and you chose: {ua1}.")
                         print(f"Squares taken: {ua1} and {ca1}.")
                         if ca1 in possible:
@@ -248,10 +246,10 @@ if tg == "games":
                         else:
                             pass
                         if u2win == "true": # player 2 in check
-                            print(username2 + " is the winner!")
+                            print(f"{username2} is the winner!")
                             print("Better luck next time!")
                             lossamt += 1
-                            stop = input("Would you like to keep playing or stop now? (y to continue, n to stop.) ")
+                            stop = input("Would you like to keep playing or stop now? (y to continue, n to stop.) ").strip()
                             if stop.lower() == "y":
                                 playamt += 1
                                 break
@@ -300,7 +298,7 @@ if tg == "games":
                 possible=[square1,square2,square3,square4,square5,square6,square7,square8,square9] #possible squares
                 print()
                 endgame = False
-                ps = input("Would you like to be X or O? (X/O) ") # ps means player_symbol but for ease its ps
+                ps = input("Would you like to be X or O? (X/O) ").strip() # ps means player_symbol but for ease its ps
                 if ps.upper() == "X":
                     ps = "X"
                     cs = "O"
@@ -329,7 +327,7 @@ if tg == "games":
                         break # any code until the part where START HERE is written is simply the same as the player one
                     else:
                         pass
-                    ua1 = input("What square would you like to place on?\nSquares to place on: " + str(possible)+" ")
+                    ua1 = input(f"What square would you like to place on?\nSquares to place on: {possible} ").strip()
                     ua1 = ua1.upper()
                     if ua1 in possible:
                         possible.remove(ua1)
@@ -373,19 +371,19 @@ if tg == "games":
                         win = "true"
                     print()
                     if win == "true":
-                        print("You chose: " + ua1 + "!")
+                        print(f"You chose: {ua1}!")
                         print("|-----|-----|-----|")
-                        print("|  "+s1+"  |  "+s2+"  |  "+s3+"  |")
+                        print(f"|  {s1}  |  {s2}  |  {s3}  |")
                         print("|-----|-----|-----|")
-                        print("|  "+s4+"  |  "+s5+"  |  "+s6+"  |")
+                        print(f"|  {s4}  |  {s4}  |  {s6}  |")
                         print("|-----|-----|-----|")
-                        print("|  "+s7+"  |  "+s8+"  |  "+s9+"  |")
+                        print(f"|  {s7}  |  {s8}  |  {s9}  |")
                         print("|-----|-----|-----|")
                         print()
                         print()
                         print(username+winner)
                         winamt += 1
-                        stop = input("Would you like to keep playing or stop now? (y to continue, n to stop.) ")
+                        stop = input("Would you like to keep playing or stop now? (y to continue, n to stop.) ").strip()
                         if stop.lower() == "n":
                             print(f"-------------------------------\nSTATS -\n----------------------------------\nTotal wins: {winamt}\nTotal ties: {tieamt}\nTotal losses: {lossamt}\nHave a good day!")
                             sys.exit()
@@ -396,18 +394,18 @@ if tg == "games":
                         pass
                     if len(possible) == 0 and win != "true": # checks length of possible (if 0 then tie)
                         tieamt += 1
-                        print(username + " chose: " + ua1 + "!")
+                        print(f"{username} chose: {ua1}!")
                         print("The game is a tie!")
                         print("|-----|-----|-----|")
-                        print("|  "+s1+"  |  "+s2+"  |  "+s3+"  |")
+                        print(f"|  {s1}  |  {s2}  |  {s3}  |")
                         print("|-----|-----|-----|")
-                        print("|  "+s4+"  |  "+s5+"  |  "+s6+"  |")
+                        print(f"|  {s4}  |  {s4}  |  {s6}  |")
                         print("|-----|-----|-----|")
-                        print("|  "+s7+"  |  "+s8+"  |  "+s9+"  |")
+                        print(f"|  {s7}  |  {s8}  |  {s9}  |")
                         print("|-----|-----|-----|")
                         print()
                         print()
-                        stop=input("Would you like to keep playing or stop now? (y to continue, n to stop.) ")
+                        stop=input("Would you like to keep playing or stop now? (y to continue, n to stop.) ").strip()
                         if stop.lower() == "y":
                             playamt += 1
                             break
@@ -417,8 +415,8 @@ if tg == "games":
                             sys.exit()
                     ca1 = random.choice(possible) #START HERE computer picks random square
                     print("Computers turn!")
-                    print("Computer chose: " + ca1 + " and you chose " + ua1 +".")
-                    print("Squares taken: " + ua1 + " and " + ca1 + ".")
+                    print(f"Computer chose: {ca1} and you chose {ua1}.")
+                    print(f"Squares taken: {ua1} and {ca1}.")
                     if ca1 in possible:
                         possible.remove(ca1) # removes from 'possible' list
                     if ca1 == "S1":
@@ -458,11 +456,11 @@ if tg == "games":
                     elif s3 == cs and s5 == cs and s7 == cs:
                         cwin = "true" # win condition checks
                     print("|-----|-----|-----|")
-                    print("|  "+s1+"  |  "+s2+"  |  "+s3+"  |")
+                    print(f"|  {s1}  |  {s2}  |  {s3}  |")
                     print("|-----|-----|-----|")
-                    print("|  "+s4+"  |  "+s5+"  |  "+s6+"  |")
+                    print(f"|  {s4}  |  {s5}  |  {s9}  |")
                     print("|-----|-----|-----|")
-                    print("|  "+s7+"  |  "+s8+"  |  "+s9+"  |")
+                    print(f"|  {s7}  |  {s8}  |  {s9}  |")
                     print("|-----|-----|-----|") # print board state
                     print()
                     print()
@@ -470,33 +468,56 @@ if tg == "games":
                         print("Computer is the winner!")
                         print("Better luck next time!")
                         lossamt += 1
-                        stop = input("Would you like to keep playing or stop now? (y to continue, n to stop.) ")
+                        stop = input("Would you like to keep playing or stop now? (y to continue, n to stop.) ").strip()
                         if stop.lower() == "y":
                             playamt += 1
                             break
                         elif stop.lower() == "n": # keep playing or stop check
                             playamt += 1
                             print(f"-------------------------------\nSTATS -\n----------------------------------\nTotal wins: {winamt}\nTotal ties: {tieamt}\nTotal losses: {lossamt}\nTotal plays: {playamt}\nHave a good day!")
-                            sys.exit()
+                            break
         if game_type == "RPS":
             import random
-            def play():
-                user_action = input("Enter a choice: rock, paper, or scissors. ")
-                possible_actions = ["rock", "paper", "scissors"]
-                if user_action.lower() == "rock" or user_action.lower() == "paper" or user_action.lower() == "scissors":
-                    user_action = user_action.lower()
+            possible_actions = ["rock", "paper", "scissors"]
+            user_action = "none"
+            # VARIABLES THAT NEED TO BE SAVED (ABOVEVARS)
+            computer_actions_possible = possible_actions.copy()
+            def whatever_wins(user_action):
+                #Whatever is the best option for the computer to win
+                if user_action == "scissors":
+                    return "rock"
+                elif user_action == "rock":
+                    return "paper"
+                elif user_action == "paper":
+                    return "scissors"
                 else:
-                    print("Please enter a valid input.")
-                    sys.exit()
-                computer_action = random.choice(possible_actions)
-                print("You chose " + user_action + ", computer chose " + computer_action )
+                    pass
+            def whatever_loses(user_action):
+                #Whatever is the best option for the computer to lose (really helpful trust)
+                if user_action == "scissors":
+                    return "paper"
+                elif user_action == "rock":
+                    return "scissors"
+                elif user_action == "paper":
+                    return "rock"
+                else:
+                    pass
+            def play_normal():
+                while True:
+                    user_action = input("Enter a choice: rock, paper, or scissors. ").strip().lower()
+                    if user_action in possible_actions:
+                        break
+                    else:
+                        print("Please enter a valid input.")
+                computer_action = random.choice(computer_actions_possible)
+                print(f"You chose {user_action}, and computer chose {computer_action}.")
                 if user_action == "rock" and computer_action == "paper":
                     print("Whoops! paper beats rock! Try again!")
                 elif user_action == "rock" and computer_action == "scissors":
                     print("Yay! rock beats scissors!")
                 elif user_action == "rock" and computer_action == "rock":
                     print("Whoops! Its a tie! (rock and rock) Try again!")
-                elif  user_action == "paper" and computer_action == "rock":
+                elif user_action == "paper" and computer_action == "rock":
                     print("Yay! paper beats rock!")
                 elif user_action == "paper" and computer_action == "scissors":
                     print("Whoops! scissors beats paper! Try again!")
@@ -508,9 +529,63 @@ if tg == "games":
                     print("Whoops! rock beats scissors! Try again!")
                 elif user_action == "scissors" and computer_action == "paper":
                     print("Yay! scissors beats paper!")
-                    
+                computer_actions_possible.append(computer_action)
+            def play_advanced():
+                while True:
+                    user_action = input("Enter a choice: rock, paper, or scissors. ").strip().lower()
+                    if user_action in possible_actions:
+                        break
+                    else:
+                        print("Please enter a valid input.")
+                computer_odds = random.randint(1,6)
+                if computer_odds < 4:
+                    computer_action = whatever_wins(user_action)
+                    print(f"You chose: {user_action}, and computer chose: {computer_action}\nYou lost...")
+                elif computer_odds == 4:
+                    print(f"You chose {user_action}, and computer chose {user_action}.\nThe game is a tie.")
+                elif computer_odds > 4:
+                    computer_action = whatever_loses(user_action)
+                    print(f"You chose: {user_action}, and computer chose: {computer_action}\nYou won!")
+            #----------------------------------------------------------------
+            def play_god():
+                while True:
+                    user_action = input("Enter a choice: rock, paper, or scissors. ").strip().lower()
+                    if user_action in possible_actions:
+                        break
+                    else:
+                        print("Please enter a valid input.")
+                computer_odds = random.randint(1,20)
+                if computer_odds <= 14:
+                    computer_action = whatever_wins(user_action)
+                    print(f"You chose: {user_action}, and computer chose: {computer_action}\nYou lost...")
+                elif computer_odds > 14 and computer_odds <= 16:
+                    print(f"You chose {user_action}, and computer chose {user_action}.\nThe game is a tie.")
+                elif computer_odds >= 17:
+                    computer_action = whatever_loses(user_action)
+                    print(f"You chose: {user_action}, and computer chose: {computer_action}\nYou won!")
+            def play_hacker():
+                print("So.\nYou choose violence.\nYou shall get nothing else.")
+                while True:
+                    user_action = input("Enter a choice: rock, paper, or scissors. ").strip().lower()
+                    if user_action in possible_actions:
+                        break
+                    else:
+                        print("Please enter a valid input.")
+                computer_action = whatever_wins(user_action) # good luck winning whoever plays this, you have to change the code to win.
+                print(f"You chose: {user_action} and computer chose: {computer_action}.\nYou lost...")
+            play_type = input("What level would you like to play? (Type them exactly - 'Normal', 'Advanced', 'God', or 'Hacker'?) ").strip().lower()
             while True:
-                play()
+                if play_type == "normal":
+                    play_normal()
+                elif play_type == "advanced":
+                    play_advanced()
+                elif play_type == "god":
+                    play_god()
+                elif play_type == "hacker":
+                    play_hacker()
+                else:
+                    print("Type not recognized. Starting normal...")
+                    play_normal()
                 play_again = input("Play again? (y/n): ")
                 if play_again.lower() != "y":
                     stop=input("Would you like to keep using games or stop now? (y to continue, n to stop.) ")
